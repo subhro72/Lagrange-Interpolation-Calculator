@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lagrange Interpolation Calculator</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container main-container">
+        <h1 class="app-title">Lagrange Interpolation <span class="highlight">Calculator</span></h1>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <!-- Input Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title-with-icon">
+                            <div class="icon-container">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <h3>Light Intensity to Output Voltage</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="section-subtitle text-center">Enter light intensity to calculate output voltage using Lagrange interpolation</h5>
+                        
+                        <div class="row">
+                            <div class="col-md-8 mx-auto">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text"><i class="fas fa-lightbulb me-2"></i>Light Intensity:</span>
+                                    <input type="number" class="form-control" id="intensity" step="0.01" placeholder="Enter a value between 42.5 and 1377">
+                                    <button class="btn btn-primary" type="button" id="calculate">
+                                        <i class="fas fa-bolt me-2"></i>Calculate
+                                    </button>
+                                </div>
+                                
+                                <div class="alert alert-info" id="result" role="alert">
+                                    <i class="fas fa-info-circle me-2"></i>Enter a light intensity value and click Calculate
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chart Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title-with-icon">
+                            <div class="icon-container">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Data Visualization</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container" id="chart"></div>
+                    </div>
+                </div>
+                
+                <!-- Data Table Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title-with-icon">
+                            <div class="icon-container">
+                                <i class="fas fa-table"></i>
+                            </div>
+                            <h3>Reference Data Points</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive" style="max-height: 300px;">
+                            <table class="table table-striped table-hover" id="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Index</th>
+                                        <th>Light Intensity (x)</th>
+                                        <th>Output Voltage (y)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="table-body">
+                                    <!-- Data will be inserted here by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Explanation Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title-with-icon">
+                            <div class="icon-container">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h3>About Lagrange Interpolation</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p>Lagrange interpolation is a mathematical method used for estimating values between known data points. For a set of n data points, the Lagrange interpolation polynomial is:</p>
+                        
+                        <div class="formula">
+                            L(x) = Σ<sub>i=0</sub><sup>n-1</sup> y<sub>i</sub> · ℓ<sub>i</sub>(x)
+                        </div>
+                        
+                        <p>where ℓ<sub>i</sub>(x) are the Lagrange basis polynomials:</p>
+                        
+                        <div class="formula">
+                            ℓ<sub>i</sub>(x) = Π<sub>j=0,j≠i</sub><sup>n-1</sup> (x - x<sub>j</sub>)/(x<sub>i</sub> - x<sub>j</sub>)
+                        </div>
+                        
+                        <p>This calculator implements Lagrange interpolation to accurately estimate the output voltage of a light sensor based on known intensity measurements. The algorithm handles any input value within the range of the provided data points, producing reliable estimates for your sensor applications.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Plotly.js for charting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.24.2/plotly.min.js"></script>
+    <script src="./index.js"></script>
+   
+</body>
+</html>
